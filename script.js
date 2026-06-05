@@ -97,13 +97,15 @@ function unflipCards(card1, card2) {
     seenCards.add(card2.dataset.id);
 
     setTimeout(() => {
+        card1.classList.add('error');
+        card2.classList.add('error');
         card1.classList.add('shake');
         card2.classList.add('shake');
     }, 200);
 
     setTimeout(() => {
-        card1.classList.remove('flipped', 'shake');
-        card2.classList.remove('flipped', 'shake');
+        card1.classList.remove('flipped', 'shake', 'error');
+        card2.classList.remove('flipped', 'shake', 'error');
         resetTurn();
     }, 1000);
 }
@@ -114,7 +116,7 @@ function resetTurn() {
 }
 
 function endGame() {
-    winMessage.innerHTML = `Oyunu <strong>${moves}</strong> gedişlə və toplam <strong>${score}</strong> xalla bitirdiniz! Bu əla nəticədir.`;
+    winMessage.innerHTML = `You finished the game in <strong>${moves}</strong> moves with a total score of <strong>${score}</strong>. Great result!`;
     winModal.style.display = 'flex';
 }
 
